@@ -11,7 +11,6 @@ import {
   Badge,
   Alert,
   Accordion,
-  Breadcrumb,
 } from '../components/ui';
 
 const Contact = () => {
@@ -38,7 +37,6 @@ const Contact = () => {
 
   return (
     <div>
-      <Breadcrumb />
       {/* Hero Section - Enhanced Design */}
       <section
         className="section hero-section"
@@ -94,7 +92,8 @@ const Contact = () => {
             >
               Ready to make something unforgettable? Let's talk about your
               vision and turn it into reality with our structured rebellion
-              approach.
+              approach. We're here to help you create a website that stands out 
+              and drives results.
             </p>
             <p
               className="mb-4 hero-subtext"

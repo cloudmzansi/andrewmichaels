@@ -25,7 +25,7 @@ export const NAVIGATION_ITEMS = [
   { path: ROUTES.CONTACT, label: 'Contact' },
 ];
 
-// Accent colours for design system
+// AGGRESSIVE ACCENT COLOURS FOR NEOBRUTALISM DESIGN SYSTEM
 export const ACCENT_COLORS = {
   BLUE: 'var(--accent-blue)',
   TEAL: 'var(--accent-teal)',
@@ -34,6 +34,7 @@ export const ACCENT_COLORS = {
   ORANGE: 'var(--accent-orange)',
   YELLOW: 'var(--accent-yellow)',
   RED: 'var(--accent-red)',
+  MAGENTA: 'var(--accent-magenta)',
 };
 
 // Animation timing constants

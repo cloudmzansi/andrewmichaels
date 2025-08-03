@@ -13,58 +13,63 @@ import {
   Carousel,
 } from '../components/ui';
 
-// Common style constants
+// AGGRESSIVE STYLE CONSTANTS
 const createHeroStyles = () => ({
-  background: 'var(--background-primary)',
+  background: 'linear-gradient(135deg, var(--background-primary) 0%, var(--accent-light-magenta) 50%, var(--accent-light-blue) 100%)',
   position: 'relative',
   overflow: 'hidden',
+  padding: 'var(--space-3xl) 0',
 });
 
-const createBackgroundElementStyles = (
-  top,
-  right,
-  width,
-  height,
-  rotation
-) => ({
+const createBackgroundElementStyles = (top, right, width, height, rotation, color) => ({
   position: 'absolute',
   top: `${top}%`,
   right: `${right}%`,
   width: `${width}px`,
   height: `${height}px`,
-  background: 'var(--accent-teal)',
-  borderRadius: 'var(--border-radius)',
+  background: color,
   border: 'var(--border-thickness) solid var(--border-and-outline)',
-  boxShadow:
-    'var(--shadow-offset) var(--shadow-offset) 0 0 var(--border-and-outline)',
-  opacity: '0.1',
+  boxShadow: 'var(--shadow-offset) var(--shadow-offset) 0 0 var(--border-and-outline)',
+  opacity: '0.8',
   transform: `rotate(${rotation}deg)`,
+  zIndex: 1,
 });
 
 const createHeroTitleStyles = () => ({
-  fontSize: 'clamp(3rem, 8vw, 5rem)',
+  fontSize: 'clamp(3rem, 10vw, 6rem)',
   fontWeight: '900',
-  lineHeight: '1.1',
+  lineHeight: '0.9',
   textTransform: 'uppercase',
-  letterSpacing: '0.1em',
-  marginBottom: 'var(--space-lg)',
+  letterSpacing: '0.3em',
+  marginBottom: 'var(--space-2xl)',
+  transform: 'rotate(-3deg)',
+  textShadow: '4px 4px 0 var(--accent-magenta), 8px 8px 0 var(--accent-teal)',
+  position: 'relative',
+  zIndex: 2,
 });
 
 const createHeroSubtitleStyles = () => ({
-  fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+  fontSize: 'clamp(1.5rem, 6vw, 3rem)',
   color: 'var(--accent-teal)',
-  textTransform: 'none',
-  fontWeight: '600',
-  marginBottom: 'var(--space-xl)',
+  textTransform: 'uppercase',
+  fontWeight: '800',
+  marginBottom: 'var(--space-2xl)',
+  transform: 'rotate(2deg)',
+  textShadow: '3px 3px 0 var(--accent-yellow)',
+  position: 'relative',
+  zIndex: 2,
 });
 
 const createHeroDescriptionStyles = () => ({
-  fontSize: 'clamp(1.125rem, 3vw, 1.375rem)',
+  fontSize: 'clamp(1rem, 3vw, 1.5rem)',
   color: 'var(--text-secondary)',
   maxWidth: '800px',
   margin: '0 auto',
-  lineHeight: '1.6',
-  marginBottom: 'var(--space-2xl)',
+  lineHeight: '1.4',
+  marginBottom: 'var(--space-3xl)',
+  position: 'relative',
+  zIndex: 2,
+  transform: 'rotate(-1deg)',
 });
 
 const createButtonContainerStyles = () => ({
@@ -73,248 +78,238 @@ const createButtonContainerStyles = () => ({
   justifyContent: 'center',
   flexWrap: 'wrap',
   marginTop: 'var(--space-2xl)',
+  marginBottom: 'var(--space-2xl)',
+  position: 'relative',
+  zIndex: 2,
 });
 
 const createFeatureCardStyles = () => ({
-  padding: 'var(--space-xl)',
+  padding: 'var(--space-2xl)',
   textAlign: 'center',
-  minHeight: '200px',
+  minHeight: '350px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  position: 'relative',
+  transform: 'rotate(-2deg)',
 });
 
 const createFeatureTitleStyles = () => ({
-  fontSize: '1.5rem',
-  marginBottom: 'var(--space-md)',
-  fontWeight: '700',
+  fontSize: '2.5rem',
+  marginBottom: 'var(--space-lg)',
+  fontWeight: '900',
+  textShadow: '3px 3px 0 var(--accent-magenta)',
+  transform: 'rotate(1deg)',
 });
 
 const createFeatureDescriptionStyles = () => ({
   color: 'var(--text-secondary)',
-  lineHeight: '1.5',
+  lineHeight: '1.6',
+  fontSize: '1.25rem',
+  transform: 'rotate(-1deg)',
 });
 
 const createSectionTitleStyles = () => ({
-  fontSize: 'clamp(2rem, 5vw, 3rem)',
-  fontWeight: '800',
+  fontSize: 'clamp(3.5rem, 10vw, 6rem)',
+  fontWeight: '900',
   textAlign: 'center',
-  marginBottom: 'var(--space-3xl)',
+  marginBottom: 'var(--space-4xl)',
+  transform: 'rotate(-2deg)',
+  textShadow: '4px 4px 0 var(--accent-magenta)',
 });
 
 const createServiceCardStyles = () => ({
-  padding: 'var(--space-xl)',
+  padding: 'var(--space-2xl)',
+  transform: 'rotate(1deg)',
 });
 
 const createServiceTitleStyles = () => ({
-  fontSize: '1.5rem',
-  fontWeight: '700',
-  marginBottom: 'var(--space-md)',
+  fontSize: '2rem',
+  fontWeight: '800',
+  marginBottom: 'var(--space-lg)',
+  textShadow: '2px 2px 0 var(--accent-teal)',
 });
 
 const createServiceDescriptionStyles = () => ({
   color: 'var(--text-secondary)',
-  lineHeight: '1.5',
-  marginBottom: 'var(--space-md)',
+  lineHeight: '1.6',
+  marginBottom: 'var(--space-lg)',
+  fontSize: '1.125rem',
 });
 
 const createStatsCardStyles = () => ({
-  padding: 'var(--space-xl)',
+  padding: 'var(--space-2xl)',
   textAlign: 'center',
+  transform: 'rotate(-1deg)',
 });
 
 const createStatsNumberStyles = color => ({
-  fontSize: '3rem',
+  fontSize: '4rem',
   color: color,
   marginBottom: 'var(--space-sm)',
   fontWeight: '900',
+  textShadow: '3px 3px 0 var(--border-and-outline)',
 });
 
 const createStatsLabelStyles = () => ({
   color: 'var(--text-secondary)',
-  fontWeight: '600',
-  fontSize: '1.125rem',
+  fontWeight: '700',
+  fontSize: '1.25rem',
+  textTransform: 'uppercase',
+  letterSpacing: '0.1em',
 });
 
 const createCTACardStyles = () => ({
   background: 'var(--background-primary)',
-  maxWidth: '800px',
+  maxWidth: '1000px',
   margin: '0 auto',
-  padding: 'var(--space-3xl)',
+  padding: 'var(--space-4xl)',
+  transform: 'rotate(1deg)',
 });
 
 const createCTATitleStyles = () => ({
-  fontSize: 'clamp(2rem, 5vw, 3rem)',
-  fontWeight: '800',
-  lineHeight: '1.2',
+  fontSize: 'clamp(3rem, 10vw, 5rem)',
+  fontWeight: '900',
+  lineHeight: '1.1',
+  textShadow: '4px 4px 0 var(--accent-magenta)',
 });
 
 const createCTADescriptionStyles = () => ({
-  fontSize: '1.25rem',
+  fontSize: '1.5rem',
   color: 'var(--text-secondary)',
   lineHeight: '1.6',
-  marginBottom: 'var(--space-xl)',
+  marginBottom: 'var(--space-2xl)',
 });
 
-// Component sections
+// CHAOTIC COMPONENT SECTIONS
 const HeroSection = () => (
   <section className="section hero-section" style={createHeroStyles()}>
-    {/* Background Elements */}
-    <div style={createBackgroundElementStyles(10, 5, 200, 200, 15)} />
-    <div style={createBackgroundElementStyles(20, 10, 150, 150, -10)} />
+    {/* AGGRESSIVE BACKGROUND ELEMENTS */}
+    <div style={createBackgroundElementStyles(5, 5, 300, 300, 15, 'var(--accent-magenta)')} />
+    <div style={createBackgroundElementStyles(15, 15, 200, 200, -20, 'var(--accent-teal)')} />
+    <div style={createBackgroundElementStyles(25, 8, 250, 250, 45, 'var(--accent-yellow)')} />
+    <div style={createBackgroundElementStyles(10, 25, 180, 180, -30, 'var(--accent-orange)')} />
 
     <div className="container">
-      {/* Main Hero Content */}
-      <div className="text-center" style={{ marginBottom: 'var(--space-4xl)' }}>
+      {/* MAIN HERO CONTENT */}
+      <div className="text-center" style={{ marginBottom: '0', position: 'relative', zIndex: 2 }}>
         <h1 className="mb-4" style={createHeroTitleStyles()}>
-          Structured Rebellion
+          POWERFUL
         </h1>
         <h2 className="mb-4" style={createHeroSubtitleStyles()}>
-          in Design
+          WEB DESIGN
         </h2>
         <p
           className="mb-4 hero-description"
           style={createHeroDescriptionStyles()}
         >
-          We fuse the raw energy of Neobrutalism with the precision of
-          structured design, creating intentional chaos with purpose. Every
-          element serves meaning, every colour has purpose, every interaction
-          breaks conventions while maintaining clarity. This is where rebellion
-          meets structure, where bold meets refined.
+          We don't just create websites. We craft digital experiences that demand attention 
+          and drive results. Our unique approach combines bold, rebellious design with strategic 
+          structure to deliver websites that stand out in today's crowded digital landscape.
         </p>
         <div style={createButtonContainerStyles()}>
           <Link to="/contact" style={{ textDecoration: 'none' }}>
             <Button
               variant="primary"
               style={{
-                fontSize: '1.125rem',
-                padding: 'var(--space-md) var(--space-xl)',
+                fontSize: '1.25rem',
+                padding: 'var(--space-lg) var(--space-2xl)',
+                transform: 'rotate(-3deg)',
               }}
             >
-              Start Your Project
+              START REVOLUTION
             </Button>
           </Link>
           <Link to="/work" style={{ textDecoration: 'none' }}>
             <Button
               variant="outline"
               style={{
-                fontSize: '1.125rem',
-                padding: 'var(--space-md) var(--space-xl)',
+                fontSize: '1.5rem',
+                padding: 'var(--space-xl) var(--space-3xl)',
+                transform: 'rotate(2deg)',
               }}
             >
-              View Our Work
+              VIEW OUR WORK
             </Button>
           </Link>
         </div>
       </div>
 
-      {/* Hero Feature Cards */}
-      <div className="grid grid-3" style={{ gap: 'var(--space-xl)' }}>
-        <div
-          className="neobrutalism-card accent-teal"
-          style={createFeatureCardStyles()}
-        >
-          <h3 style={createFeatureTitleStyles()}>REBELLION</h3>
-          <p style={createFeatureDescriptionStyles()}>
-            Bold colours, raw aesthetics, and deliberate rule-breaking that
-            challenges conventional design norms.
-          </p>
-        </div>
 
-        <div
-          className="neobrutalism-card accent-teal"
-          style={createFeatureCardStyles()}
-        >
-          <h3 style={createFeatureTitleStyles()}>STRUCTURE</h3>
-          <p style={createFeatureDescriptionStyles()}>
-            Clean layouts, logical hierarchies, and purposeful spacing that
-            ensures clarity and usability.
-          </p>
-        </div>
-
-        <div
-          className="neobrutalism-card accent-green"
-          style={createFeatureCardStyles()}
-        >
-          <h3 style={createFeatureTitleStyles()}>INTENTION</h3>
-          <p style={createFeatureDescriptionStyles()}>
-            Every element serves a purpose, every decision has meaning, every
-            interaction is designed with purpose.
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 );
 
 const PhilosophySection = () => (
-  <section className="section accent-section-light">
+  <section className="section accent-section-light" style={{backgroundColor: 'var(--accent-light-magenta)', position: 'relative'}}>
     <div className="container">
       <div
         className="grid grid-2"
-        style={{ gap: 'var(--space-3xl)', alignItems: 'center' }}
+        style={{ gap: 'var(--space-4xl)', alignItems: 'center' }}
       >
-        <div>
+        <div style={{ transform: 'rotate(-1deg)' }}>
           <h2 className="mb-4" style={createSectionTitleStyles()}>
-            STRUCTURED REBELLION
+            OUR APPROACH
           </h2>
           <p
             className="mb-4 philosophy-intro"
             style={{
-              fontSize: '1.25rem',
+              fontSize: '1.5rem',
               color: 'var(--text-secondary)',
               lineHeight: '1.6',
-              marginBottom: 'var(--space-lg)',
+              marginBottom: 'var(--space-xl)',
+              transform: 'rotate(1deg)',
             }}
           >
-            We believe in the power of controlled chaos. Every design decision
-            is deliberate, every colour choice intentional, every layout
-            purposeful.
+            We believe in the power of bold design to capture attention and drive action. 
+            Our "Structured Rebellion" philosophy combines the energy of unconventional design 
+            with the precision of strategic thinking.
           </p>
-          <p className="mb-4" style={{ lineHeight: '1.6' }}>
-            Our approach combines the rebellious spirit of Neobrutalism with the
-            structured precision of modern design systems. We break the rules,
-            but we do it with purpose. We challenge conventions, but we maintain
-            clarity.
+          <p className="mb-4" style={{ lineHeight: '1.6', fontSize: '1.25rem', transform: 'rotate(-1deg)' }}>
+            Every website we create follows this principle: break the rules of conventional 
+            web design while maintaining perfect functionality and user experience. We use bold 
+            colours, striking typography, and unconventional layouts to create websites that 
+            are impossible to ignore.
           </p>
-          <p className="mb-4" style={{ lineHeight: '1.6' }}>
-            The result? Designs that are bold yet accessible, striking yet
-            functional, rebellious yet structured. We create experiences that
-            demand attention while providing seamless user journeys.
+          <p className="mb-4" style={{ lineHeight: '1.6', fontSize: '1.25rem', transform: 'rotate(1deg)' }}>
+            The result? Websites that not only look extraordinary but also deliver exceptional 
+            performance for your business. We create digital experiences that stand out, engage 
+            users, and drive conversions.
           </p>
-          <p className="mb-4" style={{ lineHeight: '1.6' }}>
-            This isn't just design. It's a philosophy. It's about finding the
-            perfect balance between chaos and order, between rebellion and
-            structure, between bold and refined.
+          <p className="mb-4" style={{ lineHeight: '1.6', fontSize: '1.25rem', transform: 'rotate(-1deg)' }}>
+            This isn't just design. It's strategic rebellion. It's about finding the perfect 
+            balance between bold creativity and business results.
           </p>
           <div
             style={{
               display: 'flex',
-              gap: 'var(--space-md)',
+              gap: 'var(--space-lg)',
               flexWrap: 'wrap',
-              marginTop: 'var(--space-xl)',
+              marginTop: 'var(--space-2xl)',
             }}
           >
             <Link to="/contact" style={{ textDecoration: 'none' }}>
               <Button
                 variant="secondary"
                 style={{
-                  fontSize: '1.125rem',
-                  padding: 'var(--space-md) var(--space-xl)',
+                  fontSize: '1.25rem',
+                  padding: 'var(--space-lg) var(--space-2xl)',
+                  transform: 'rotate(-2deg)',
                 }}
               >
-                Begin Collaboration
+                JOIN THE REVOLUTION
               </Button>
             </Link>
             <Link to="/about" style={{ textDecoration: 'none' }}>
               <Button
                 variant="outline"
                 style={{
-                  fontSize: '1.125rem',
-                  padding: 'var(--space-md) var(--space-xl)',
+                  fontSize: '1.25rem',
+                  padding: 'var(--space-lg) var(--space-2xl)',
+                  transform: 'rotate(2deg)',
                 }}
               >
-                Learn Our Process
+                LEARN MORE
               </Button>
             </Link>
           </div>
@@ -323,38 +318,38 @@ const PhilosophySection = () => (
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 'var(--space-xl)',
+            gap: 'var(--space-2xl)',
             alignContent: 'start',
           }}
         >
           <div
-            className="neobrutalism-card accent-teal"
-            style={{ padding: 'var(--space-xl)' }}
+            className="neobrutalism-card accent-magenta"
+            style={{ padding: 'var(--space-xl)', transform: 'rotate(2deg)' }}
           >
-            <h3 style={createFeatureTitleStyles()}>REBELLION</h3>
+            <h3 style={createFeatureTitleStyles()}>BOLD DESIGN</h3>
             <p style={createFeatureDescriptionStyles()}>
-              Bold colours, raw aesthetics, and deliberate rule-breaking that
-              challenges conventional design norms.
+              We create websites that break conventions while maintaining perfect functionality. 
+              Every element is intentional, every colour purposeful, every interaction meaningful.
             </p>
           </div>
           <div
             className="neobrutalism-card accent-teal"
-            style={{ padding: 'var(--space-xl)' }}
+            style={{ padding: 'var(--space-xl)', transform: 'rotate(-1deg)' }}
           >
-            <h3 style={createFeatureTitleStyles()}>STRUCTURE</h3>
+            <h3 style={createFeatureTitleStyles()}>STRATEGIC STRUCTURE</h3>
             <p style={createFeatureDescriptionStyles()}>
-              Clean layouts, logical hierarchies, and purposeful spacing that
-              ensures clarity and usability.
+              Behind every rebellious design lies strategic thinking. We ensure your website 
+              not only looks bold but performs brilliantly for your business goals.
             </p>
           </div>
           <div
-            className="neobrutalism-card accent-green"
-            style={{ padding: 'var(--space-xl)' }}
+            className="neobrutalism-card accent-yellow"
+            style={{ padding: 'var(--space-xl)', transform: 'rotate(3deg)' }}
           >
-            <h3 style={createFeatureTitleStyles()}>INTENTION</h3>
+            <h3 style={createFeatureTitleStyles()}>RESULTS DRIVEN</h3>
             <p style={createFeatureDescriptionStyles()}>
-              Every element serves a purpose, every decision has meaning, every
-              interaction is designed with purpose.
+              Your competitors will notice when they see what we've built. This isn't just 
+              a website. It's a powerful tool for your business success.
             </p>
           </div>
         </div>
@@ -364,27 +359,28 @@ const PhilosophySection = () => (
 );
 
 const ServicesSection = () => (
-  <section className="section">
+  <section className="section" style={{backgroundColor: 'var(--background-primary)', position: 'relative'}}>
     <div className="container">
       <h2 className="section-title" style={createSectionTitleStyles()}>
-        OUR APPROACH
+        OUR WEAPONS
       </h2>
 
-      {/* Desktop Grid Layout */}
-      <div className="grid grid-3" style={{ gap: 'var(--space-xl)' }}>
+      {/* CHAOTIC GRID LAYOUT */}
+      <div className="grid grid-3" style={{ gap: 'var(--space-3xl)' }}>
         <div
           className="neobrutalism-card accent-violet"
           style={createServiceCardStyles()}
         >
           <h3 className="mb-3" style={createServiceTitleStyles()}>
-            WEB DESIGN
+            WEBSITE DESIGN
           </h3>
           <p
             className="mb-3 service-description"
             style={createServiceDescriptionStyles()}
           >
-            Bold, structured websites that break conventions while maintaining
-            perfect usability. Every pixel is intentional.
+            Bold, structured websites that break conventions while maintaining 
+            perfect functionality and user experience. We create digital experiences 
+            that capture attention and drive results.
           </p>
           <div
             style={{
@@ -401,7 +397,7 @@ const ServicesSection = () => (
 
         <div
           className="neobrutalism-card accent-orange"
-          style={createServiceCardStyles()}
+          style={{...createServiceCardStyles(), transform: 'rotate(-2deg)'}}
         >
           <h3 className="mb-3" style={createServiceTitleStyles()}>
             BRAND IDENTITY
@@ -410,8 +406,8 @@ const ServicesSection = () => (
             className="mb-3 service-description"
             style={createServiceDescriptionStyles()}
           >
-            Visual identities that stand out while maintaining consistency. Bold
-            logos, structured guidelines, rebellious spirit.
+            Distinctive brand identities that stand out in a crowded marketplace 
+            with rebellious visual elements. Your brand should be as bold as your ambitions.
           </p>
           <div
             style={{
@@ -428,17 +424,18 @@ const ServicesSection = () => (
 
         <div
           className="neobrutalism-card accent-yellow"
-          style={createServiceCardStyles()}
+          style={{...createServiceCardStyles(), transform: 'rotate(1deg)'}}
         >
           <h3 className="mb-3" style={createServiceTitleStyles()}>
-            DIGITAL EXPERIENCES
+            WEB DEVELOPMENT
           </h3>
           <p
             className="mb-3 service-description"
             style={createServiceDescriptionStyles()}
           >
-            Interactive experiences that engage and inspire. Structured
-            interactions with rebellious visual elements.
+            Robust, scalable web applications built with modern technologies 
+            and bold design principles. We build the technical foundation 
+            that supports your bold vision.
           </p>
           <div
             style={{
@@ -464,32 +461,32 @@ const StatsSection = () => (
         BY THE NUMBERS
       </h2>
 
-      {/* Desktop Grid Layout */}
-      <div className="grid grid-4" style={{ gap: 'var(--space-xl)' }}>
+      {/* CHAOTIC GRID LAYOUT */}
+      <div className="grid grid-4" style={{ gap: 'var(--space-3xl)' }}>
         <div
           className="neobrutalism-stats-card"
           style={createStatsCardStyles()}
         >
-          <h2 style={createStatsNumberStyles('var(--accent-teal)')}>50+</h2>
-          <p style={createStatsLabelStyles()}>Projects Completed</p>
+          <h2 style={createStatsNumberStyles('var(--accent-magenta)')}>100+</h2>
+          <p style={createStatsLabelStyles()}>Projects Destroyed</p>
         </div>
         <div
           className="neobrutalism-stats-card"
-          style={createStatsCardStyles()}
+          style={{...createStatsCardStyles(), transform: 'rotate(2deg)'}}
         >
           <h2 style={createStatsNumberStyles('var(--accent-teal)')}>100%</h2>
           <p style={createStatsLabelStyles()}>Client Satisfaction</p>
         </div>
         <div
           className="neobrutalism-stats-card"
-          style={createStatsCardStyles()}
+          style={{...createStatsCardStyles(), transform: 'rotate(-1deg)'}}
         >
           <h2 style={createStatsNumberStyles('var(--accent-green)')}>24/7</h2>
-          <p style={createStatsLabelStyles()}>Creative Process</p>
+          <p style={createStatsLabelStyles()}>Creative Destruction</p>
         </div>
         <div
           className="neobrutalism-stats-card"
-          style={createStatsCardStyles()}
+          style={{...createStatsCardStyles(), transform: 'rotate(3deg)'}}
         >
           <h2 style={createStatsNumberStyles('var(--accent-violet)')}>∞</h2>
           <p style={createStatsLabelStyles()}>Creative Possibilities</p>
@@ -500,14 +497,14 @@ const StatsSection = () => (
 );
 
 const ProcessSection = () => (
-  <section className="section">
+  <section className="section" style={{backgroundColor: 'var(--accent-light-yellow)', position: 'relative'}}>
     <div className="container">
       <h2 className="section-title" style={createSectionTitleStyles()}>
-        OUR PROCESS
+        HOW WE WORK
       </h2>
 
-      {/* Desktop Grid Layout */}
-      <div className="grid grid-2" style={{ gap: 'var(--space-xl)' }}>
+      {/* CHAOTIC GRID LAYOUT */}
+      <div className="grid grid-2" style={{ gap: 'var(--space-3xl)' }}>
         <div
           className="neobrutalism-card accent-teal"
           style={createServiceCardStyles()}
@@ -516,47 +513,47 @@ const ProcessSection = () => (
             DISCOVER
           </h3>
           <p style={createServiceDescriptionStyles()}>
-            We dive deep into your brand, understanding your vision, challenges,
-            and the rebellious spirit you want to convey.
+            We begin by understanding your business, your goals, and the rebellious 
+            spirit you want to unleash in your digital presence.
           </p>
         </div>
 
         <div
           className="neobrutalism-card accent-teal"
-          style={createServiceCardStyles()}
+          style={{...createServiceCardStyles(), transform: 'rotate(-2deg)'}}
         >
           <h3 className="mb-3" style={createServiceTitleStyles()}>
             STRATEGISE
           </h3>
           <p style={createServiceDescriptionStyles()}>
-            We develop a structured approach that balances bold creativity with
-            strategic thinking and user-centred design.
+            We develop a bold approach that balances creative rebellion with 
+            strategic thinking and user-centred design principles.
           </p>
         </div>
 
         <div
           className="neobrutalism-card accent-green"
-          style={createServiceCardStyles()}
+          style={{...createServiceCardStyles(), transform: 'rotate(1deg)'}}
         >
           <h3 className="mb-3" style={createServiceTitleStyles()}>
             CREATE
           </h3>
           <p style={createServiceDescriptionStyles()}>
-            We craft designs that break conventions while maintaining perfect
-            functionality and user experience.
+            We craft designs that break conventions while maintaining perfect 
+            functionality and exceptional user experience.
           </p>
         </div>
 
         <div
           className="neobrutalism-card accent-violet"
-          style={createServiceCardStyles()}
+          style={{...createServiceCardStyles(), transform: 'rotate(3deg)'}}
         >
           <h3 className="mb-3" style={createServiceTitleStyles()}>
-            DELIVER
+            LAUNCH
           </h3>
           <p style={createServiceDescriptionStyles()}>
-            We launch your project with precision, ensuring every element works
-            perfectly while maintaining its rebellious spirit.
+            We deliver your project with precision, ensuring every element works 
+            perfectly while maintaining its bold, rebellious spirit.
           </p>
         </div>
       </div>
@@ -565,44 +562,45 @@ const ProcessSection = () => (
 );
 
 const CTASection = () => (
-  <section className="section accent-section-light">
+  <section className="section accent-section-light" style={{backgroundColor: 'var(--background-primary)', position: 'relative'}}>
     <div className="container">
       <div
         className="neobrutalism-hero-card text-center"
         style={createCTACardStyles()}
       >
         <h2 className="mb-4" style={createCTATitleStyles()}>
-          READY TO REBEL WITH STRUCTURE?
+          READY TO DESTROY?
         </h2>
         <p
           className="mb-4 cta-description"
           style={createCTADescriptionStyles()}
         >
-          Let's create something that breaks the rules while maintaining perfect
-          functionality. Something bold, structured, and absolutely
-          unforgettable.
+          Let's create a website that breaks the rules while delivering exceptional 
+          results for your business. Something bold, strategic, and absolutely unforgettable.
         </p>
         <div style={createButtonContainerStyles()}>
           <Link to="/contact" style={{ textDecoration: 'none' }}>
             <Button
               variant="primary"
               style={{
-                fontSize: '1.125rem',
-                padding: 'var(--space-md) var(--space-xl)',
+                fontSize: '1.5rem',
+                padding: 'var(--space-xl) var(--space-3xl)',
+                transform: 'rotate(-2deg)',
               }}
             >
-              Start Your Project
+              START DESTRUCTION
             </Button>
           </Link>
           <Link to="/work" style={{ textDecoration: 'none' }}>
             <Button
               variant="outline"
               style={{
-                fontSize: '1.125rem',
-                padding: 'var(--space-md) var(--space-xl)',
+                fontSize: '1.5rem',
+                padding: 'var(--space-xl) var(--space-3xl)',
+                transform: 'rotate(2deg)',
               }}
             >
-              View Our Work
+              VIEW OUR WORK
             </Button>
           </Link>
         </div>
@@ -617,7 +615,6 @@ const Home = () => {
       <HeroSection />
       <PhilosophySection />
       <ServicesSection />
-      <StatsSection />
       <ProcessSection />
       <CTASection />
     </div>

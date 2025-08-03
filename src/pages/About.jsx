@@ -11,7 +11,6 @@ import {
   Badge,
   Alert,
   Carousel,
-  Breadcrumb,
 } from '../components/ui';
 
 // Common style constants
@@ -44,29 +43,40 @@ const createBackgroundElementStyles = (
 });
 
 const createHeroTitleStyles = () => ({
-  fontSize: 'clamp(3rem, 8vw, 5rem)',
+  fontSize: 'clamp(4rem, 12vw, 8rem)',
   fontWeight: '900',
-  lineHeight: '1.1',
+  lineHeight: '0.9',
   textTransform: 'uppercase',
-  letterSpacing: '0.1em',
-  marginBottom: 'var(--space-lg)',
+  letterSpacing: '0.3em',
+  marginBottom: 'var(--space-xl)',
+  transform: 'rotate(-2deg)',
+  textShadow: '6px 6px 0 var(--accent-magenta), 12px 12px 0 var(--accent-teal)',
+  position: 'relative',
+  zIndex: 2,
 });
 
 const createHeroSubtitleStyles = color => ({
-  fontSize: 'clamp(2rem, 5vw, 3rem)',
+  fontSize: 'clamp(2.5rem, 8vw, 4rem)',
   color: color,
-  textTransform: 'none',
-  fontWeight: '600',
-  marginBottom: 'var(--space-xl)',
+  textTransform: 'uppercase',
+  fontWeight: '800',
+  marginBottom: 'var(--space-2xl)',
+  transform: 'rotate(2deg)',
+  textShadow: '4px 4px 0 var(--accent-yellow)',
+  position: 'relative',
+  zIndex: 2,
 });
 
 const createHeroDescriptionStyles = () => ({
-  fontSize: 'clamp(1.125rem, 3vw, 1.375rem)',
+  fontSize: 'clamp(1.5rem, 4vw, 2rem)',
   color: 'var(--text-secondary)',
-  maxWidth: '800px',
+  maxWidth: '900px',
   margin: '0 auto',
-  lineHeight: '1.6',
-  marginBottom: 'var(--space-lg)',
+  lineHeight: '1.4',
+  marginBottom: 'var(--space-3xl)',
+  position: 'relative',
+  zIndex: 2,
+  transform: 'rotate(-1deg)',
 });
 
 const createHeroSubtextStyles = () => ({
@@ -79,10 +89,12 @@ const createHeroSubtextStyles = () => ({
 });
 
 const createSectionTitleStyles = () => ({
-  fontSize: 'clamp(2rem, 5vw, 3rem)',
-  fontWeight: '800',
+  fontSize: 'clamp(3.5rem, 10vw, 6rem)',
+  fontWeight: '900',
   textAlign: 'center',
-  marginBottom: 'var(--space-3xl)',
+  marginBottom: 'var(--space-4xl)',
+  transform: 'rotate(-2deg)',
+  textShadow: '4px 4px 0 var(--accent-magenta)',
 });
 
 const createPhilosophyIntroStyles = () => ({
@@ -154,21 +166,45 @@ const createButtonContainerStyles = () => ({
 
 // Component sections
 const HeroSection = () => (
-  <section className="section hero-section" style={createHeroStyles()}>
-    {/* Background Elements */}
+  <section className="section hero-section" style={{
+    ...createHeroStyles(),
+    background: 'linear-gradient(135deg, var(--background-primary) 0%, var(--accent-light-magenta) 50%, var(--accent-light-blue) 100%)',
+    padding: 'var(--space-5xl) 0',
+  }}>
+    {/* AGGRESSIVE BACKGROUND ELEMENTS */}
+    <div
+      style={createBackgroundElementStyles(
+        5,
+        5,
+        300,
+        300,
+        15,
+        'var(--accent-magenta)'
+      )}
+    />
     <div
       style={createBackgroundElementStyles(
         15,
+        15,
+        200,
+        200,
+        -20,
+        'var(--accent-teal)'
+      )}
+    />
+    <div
+      style={createBackgroundElementStyles(
+        25,
         8,
-        180,
-        180,
-        20,
-        'var(--accent-violet)'
+        250,
+        250,
+        45,
+        'var(--accent-yellow)'
       )}
     />
 
     <div className="container">
-      <div className="text-center">
+      <div className="text-center" style={{ position: 'relative', zIndex: 2 }}>
         <h1 className="mb-4" style={createHeroTitleStyles()}>
           THE DESIGNER
         </h1>
@@ -176,7 +212,7 @@ const HeroSection = () => (
           className="mb-4 designer-name"
           style={createHeroSubtitleStyles('var(--accent-blue)')}
         >
-          Andrew Michaels
+          ANDREW MICHAELS
         </h2>
         <p
           className="mb-4 hero-description"
@@ -185,7 +221,12 @@ const HeroSection = () => (
           A designer who believes in the power of structured rebellion. Every
           design decision is deliberate, every colour choice intentional.
         </p>
-        <p className="mb-4 hero-subtext" style={createHeroSubtextStyles()}>
+        <p className="mb-4 hero-subtext" style={{
+          ...createHeroSubtextStyles(),
+          transform: 'rotate(1deg)',
+          position: 'relative',
+          zIndex: 2,
+        }}>
           Breaking conventions while maintaining clarity. Creating chaos with
           purpose. This is where rebellion meets structure.
         </p>
@@ -520,7 +561,6 @@ const CTASection = () => (
 const About = () => {
   return (
     <div>
-      <Breadcrumb />
       <HeroSection />
       <PhilosophySection />
       <ExperienceSection />

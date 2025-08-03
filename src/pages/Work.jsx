@@ -11,13 +11,11 @@ import {
   Badge,
   Alert,
   Carousel,
-  Breadcrumb,
 } from '../components/ui';
 
 const Work = () => {
   return (
     <div>
-      <Breadcrumb />
       {/* Hero Section - Enhanced Design */}
       <section
         className="section hero-section"

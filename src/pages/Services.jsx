@@ -11,13 +11,11 @@ import {
   Badge,
   Alert,
   Carousel,
-  Breadcrumb,
 } from '../components/ui';
 
 const Services = () => {
   return (
     <div>
-      <Breadcrumb />
       {/* Hero Section - Enhanced Design */}
       <section
         className="section hero-section"
@@ -69,9 +67,9 @@ const Services = () => {
                 lineHeight: '1.6',
               }}
             >
-              We don't just provide services. We create experiences that embody
-              structured rebellion. Every project is different, every design is
-              unique.
+              We don't just provide services. We create digital experiences that embody
+              structured rebellion. Every project is different, every design is unique,
+              but every solution is built to deliver results for your business.
             </p>
             <p
               className="mb-4 hero-subtext"
@@ -84,7 +82,7 @@ const Services = () => {
               }}
             >
               Bold designs with purposeful structure. Rebellious creativity with
-              intentional clarity.
+              strategic thinking.
             </p>
           </div>
         </div>

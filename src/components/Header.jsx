@@ -6,7 +6,7 @@ import { useEscapeKey } from '../hooks/useEscapeKey';
 import { NAVIGATION_ITEMS, ACCENT_COLORS, Z_INDEX } from '../utils/constants';
 import { neobrutalismStyles, mergeStyles } from '../utils/styles';
 
-// Style objects extracted for better readability
+// AGGRESSIVE STYLE OBJECTS
 const createHeaderStyles = () => ({
   background: 'var(--background-primary)',
   borderBottom: 'var(--border-thickness) solid var(--border-and-outline)',
@@ -14,55 +14,56 @@ const createHeaderStyles = () => ({
   position: 'sticky',
   top: 0,
   zIndex: Z_INDEX.DROPDOWN,
-  padding: 'var(--space-md) var(--space-lg)',
+  padding: 'var(--space-lg) var(--space-xl)',
 });
 
 const createContainerStyles = () => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  maxWidth: '1200px',
+  maxWidth: '1400px',
   margin: '0 auto',
 });
 
 const createLogoStyles = isMobile =>
   mergeStyles(neobrutalismStyles.base, {
     fontWeight: '900',
-    fontSize: isMobile ? '1.5rem' : '1.75rem',
+    fontSize: isMobile ? '1.75rem' : '2.25rem',
     color: 'var(--text-primary)',
     textDecoration: 'none',
-    padding: 'var(--space-xs) var(--space-sm)',
+    padding: 'var(--space-md) var(--space-lg)',
     backgroundColor: 'var(--background-primary)',
     position: 'relative',
     overflow: 'hidden',
-    letterSpacing: '0.1em',
+    letterSpacing: '0.3em',
     textTransform: 'uppercase',
     display: 'inline-block',
+    transform: 'rotate(-3deg)',
+    textShadow: '3px 3px 0 var(--accent-magenta)',
   });
 
 const createHamburgerStyles = () => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-around',
-  width: '30px',
-  height: '30px',
+  width: '40px',
+  height: '40px',
   background: 'transparent',
   border: 'var(--border-thickness) solid var(--border-and-outline)',
-  borderRadius: 'var(--border-radius)',
   cursor: 'pointer',
   padding: '0',
   zIndex: 10,
-  boxShadow:
-    'var(--shadow-offset) var(--shadow-offset) 0 0 var(--border-and-outline)',
-  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  boxShadow: 'var(--shadow-offset) var(--shadow-offset) 0 0 var(--border-and-outline)',
+  transition: 'all 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+  transform: 'rotate(-1deg)',
 });
 
 const createHamburgerLineStyles = () => ({
   width: '100%',
-  height: '2px',
+  height: '3px',
   backgroundColor: 'var(--text-primary)',
   border: '1px solid var(--border-and-outline)',
-  transition: 'all 0.3s ease',
+  transition: 'all 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
   transformOrigin: 'center',
 });
 
@@ -78,20 +79,20 @@ const createNavMenuStyles = (isMobile, isMenuOpen) => ({
       height: '100vh',
       backgroundColor: 'var(--background-primary)',
       borderLeft: 'var(--border-thickness) solid var(--border-and-outline)',
-      boxShadow: '-4px 0 0 0 var(--border-and-outline)',
+      boxShadow: '-6px 0 0 0 var(--border-and-outline)',
       transition: 'right 0.3s ease',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       zIndex: 999,
       flexDirection: 'column',
-      padding: 'var(--space-xl)',
+      padding: 'var(--space-2xl)',
     }),
 });
 
 const createNavLinksStyles = isMobile => ({
   display: 'flex',
-  gap: 'var(--space-lg)',
+  gap: 'var(--space-xl)',
   listStyle: 'none',
   margin: 0,
   padding: 0,
@@ -102,19 +103,20 @@ const createNavLinksStyles = isMobile => ({
 const createCloseButtonStyles = () =>
   mergeStyles(neobrutalismStyles.base, {
     position: 'absolute',
-    top: 'var(--space-lg)',
-    right: 'var(--space-lg)',
+    top: 'var(--space-xl)',
+    right: 'var(--space-xl)',
     background: 'var(--background-primary)',
     borderRadius: '50%',
-    width: '40px',
-    height: '40px',
+    width: '50px',
+    height: '50px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
-    fontSize: '1.5rem',
+    fontSize: '2rem',
     fontWeight: 'bold',
     color: 'var(--text-primary)',
+    transform: 'rotate(-2deg)',
   });
 
 const Header = () => {
@@ -137,19 +139,19 @@ const Header = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   const createLinkStyles = (isActivePage, accentColor) => ({
-    fontFamily: 'Inter, sans-serif',
-    fontWeight: '600',
-    fontSize: isMobile ? '1.25rem' : '1rem',
+    fontFamily: 'Space Mono, monospace',
+    fontWeight: '700',
+    fontSize: isMobile ? '1.5rem' : '1.25rem',
     textTransform: 'uppercase',
     color: isActivePage ? 'white' : 'var(--text-primary)',
     textDecoration: 'none',
     padding: isMobile
-      ? 'var(--space-sm) var(--space-lg)'
-      : 'var(--space-xs) var(--space-sm)',
+      ? 'var(--space-lg) var(--space-xl)'
+      : 'var(--space-sm) var(--space-md)',
     border: 'var(--border-thickness) solid transparent',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    transition: 'all 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
     position: 'relative',
-    letterSpacing: '0.05em',
+    letterSpacing: '0.15em',
     backgroundColor: isActivePage ? accentColor : 'transparent',
     boxShadow: isActivePage
       ? 'var(--shadow-offset) var(--shadow-offset) 0 0 var(--border-and-outline)'
@@ -157,6 +159,8 @@ const Header = () => {
     borderColor: isActivePage ? 'var(--border-and-outline)' : 'transparent',
     cursor: 'pointer',
     display: 'inline-block',
+    transform: 'rotate(1deg)',
+    textShadow: isActivePage ? '2px 2px 0 var(--border-and-outline)' : 'none',
   });
 
   const handleLinkHover = (e, isActivePage, lightColor) => {
@@ -166,7 +170,8 @@ const Header = () => {
       target.style.backgroundColor = lightColor;
       target.style.boxShadow =
         'var(--shadow-offset) var(--shadow-offset) 0 0 var(--border-and-outline)';
-      target.style.transform = 'translateY(-1px)';
+      target.style.transform = 'translate(-3px, -3px) rotate(2deg)';
+      target.style.textShadow = '2px 2px 0 var(--border-and-outline)';
     }
   };
 
@@ -176,27 +181,28 @@ const Header = () => {
       target.style.borderColor = 'transparent';
       target.style.backgroundColor = 'transparent';
       target.style.boxShadow = 'none';
-      target.style.transform = 'translateY(0)';
+      target.style.transform = 'translate(0, 0) rotate(1deg)';
+      target.style.textShadow = 'none';
     }
   };
 
   const handleLogoHover = e => {
     const target = e.target;
-    target.style.transform = 'translate(-1px, -1px)';
+    target.style.transform = 'translate(-3px, -3px) rotate(-1deg)';
     target.style.boxShadow =
-      'calc(var(--shadow-offset) + 1px) calc(var(--shadow-offset) + 1px) 0 0 var(--border-and-outline)';
+      'calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 0 var(--border-and-outline)';
   };
 
   const handleLogoLeave = e => {
     const target = e.target;
-    target.style.transform = 'translate(0, 0)';
+    target.style.transform = 'translate(0, 0) rotate(-3deg)';
     target.style.boxShadow =
       'var(--shadow-offset) var(--shadow-offset) 0 0 var(--border-and-outline)';
   };
 
-  // Navigation colour arrays
+  // AGGRESSIVE NAVIGATION COLOUR ARRAYS
   const navigationColors = [
-    ACCENT_COLORS.TEAL,
+    ACCENT_COLORS.MAGENTA,
     ACCENT_COLORS.TEAL,
     ACCENT_COLORS.GREEN,
     ACCENT_COLORS.VIOLET,
@@ -204,7 +210,7 @@ const Header = () => {
   ];
 
   const lightColors = [
-    'var(--accent-light-blue)',
+    'var(--accent-light-magenta)',
     'var(--accent-light-teal)',
     'var(--accent-light-green)',
     'var(--accent-light-violet)',
@@ -224,48 +230,50 @@ const Header = () => {
           CLOUD MZANSI
         </Link>
 
-        {/* Hamburger Menu Button */}
-        <button
-          className="hamburger-menu"
-          onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
-          style={createHamburgerStyles()}
-          onMouseEnter={handleLogoHover}
-          onMouseLeave={handleLogoLeave}
-        >
-          <span
-            className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}
-            style={{
-              ...createHamburgerLineStyles(),
-              transform: isMenuOpen
-                ? 'rotate(45deg) translate(6px, 6px)'
-                : 'none',
-            }}
-          />
-          <span
-            className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}
-            style={{
-              ...createHamburgerLineStyles(),
-              opacity: isMenuOpen ? 0 : 1,
-            }}
-          />
-          <span
-            className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}
-            style={{
-              ...createHamburgerLineStyles(),
-              transform: isMenuOpen
-                ? 'rotate(-45deg) translate(6px, -6px)'
-                : 'none',
-            }}
-          />
-        </button>
+        {/* AGGRESSIVE HAMBURGER MENU BUTTON - MOBILE ONLY */}
+        {isMobile && (
+          <button
+            className="hamburger-menu"
+            onClick={toggleMenu}
+            aria-label="Toggle navigation menu"
+            style={createHamburgerStyles()}
+            onMouseEnter={handleLogoHover}
+            onMouseLeave={handleLogoLeave}
+          >
+            <span
+              className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}
+              style={{
+                ...createHamburgerLineStyles(),
+                transform: isMenuOpen
+                  ? 'rotate(45deg) translate(8px, 8px)'
+                  : 'none',
+              }}
+            />
+            <span
+              className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}
+              style={{
+                ...createHamburgerLineStyles(),
+                opacity: isMenuOpen ? 0 : 1,
+              }}
+            />
+            <span
+              className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}
+              style={{
+                ...createHamburgerLineStyles(),
+                transform: isMenuOpen
+                  ? 'rotate(-45deg) translate(8px, -8px)'
+                  : 'none',
+              }}
+            />
+          </button>
+        )}
 
         <nav
           ref={menuRef}
           className={`nav-menu ${isMenuOpen ? 'open' : ''}`}
           style={createNavMenuStyles(isMobile, isMenuOpen)}
         >
-          {/* Close Button for Mobile Menu */}
+          {/* AGGRESSIVE CLOSE BUTTON FOR MOBILE MENU */}
           {isMobile && isMenuOpen && (
             <button
               onClick={closeMenu}
