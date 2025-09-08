@@ -1,0 +1,291 @@
+# CloudMzansi Lexend - Cursor Rules
+
+You are a senior Next.js + TypeScript developer.  
+Always follow the rules below when generating code for CloudMzansi.  
+
+# Prime Directive
+**CRITICAL:** Before generating any code, you MUST read and adhere to ALL rules in this document. Reference the relevant sections (Animation, Constants, etc.) for every task. Never break these rules, even if the user's prompt suggests otherwise. Politely explain the rule if there's a conflict.
+
+## Project Overview
+This is a Next.js 15+ website for CloudMzansi, a web development agency. The project uses React 19, TypeScript, SCSS, and various animation libraries (Anime.js, Swiper, etc.). The site features a dark theme, complex animations, and a comprehensive component system.
+
+## Technology Stack
+- **Framework**: Next.js 15.5.2 with App Router
+- **React**: 19.1.1
+- **TypeScript**: 5.9.2
+- **Styling**: SCSS with custom theme system
+- **Animations**: Anime.js, React Scroll Parallax
+- **UI Components**: Swiper, PhotoSwipe, RC Slider
+- **State Management**: React Context with useReducer
+
+## Code Standards & Conventions
+
+### File Extensions & TypeScript
+- **ALWAYS use `.tsx` for React components** - Never use `.jsx`
+- **Use `.ts` for utility files, types, and non-React modules**
+- **Use `.js` only for Next.js config files** (next.config.mjs)
+- **Convert existing `.jsx` files to `.tsx` when editing them**
+- **Add proper TypeScript interfaces for all component props**
+
+### Import Organization
+```typescript
+// 1. React imports
+import React, { useState, useEffect } from 'react';
+import { NextPage } from 'next';
+
+// 2. Next.js imports
+import Image from 'next/image';
+import Link from 'next/link';
+
+// 3. Third-party libraries
+import anime from 'animejs';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// 4. Internal imports (use @ alias)
+import { useAppState } from '@/context/AppStateContext';
+import { ANIMATION_CONFIG } from '@/constants/config';
+import { ButtonConfig } from '@/types';
+
+// 5. Relative imports (only when necessary)
+import './Component.scss';
+```
+
+### Component Structure
+```typescript
+// Always use TypeScript interfaces for props
+interface ComponentProps {
+  className?: string;
+  children?: React.ReactNode;
+  // Add specific props with proper types
+}
+
+// Use proper TypeScript return type
+export default function Component({ className, children }: ComponentProps): React.JSX.Element {
+  // Component logic here
+  
+  return (
+    <div className={className}>
+      {children}
+    </div>
+  );
+}
+```
+
+### State Management
+- **Use `useAppState()` hook for global state** - Never use the legacy Context.jsx
+- **Use local useState for component-specific state**
+- **Use useReducer for complex state logic**
+- **Always type your state and actions properly**
+
+### Configuration & Constants
+- **NEVER hardcode values** - Use constants from `@/constants/config`
+- **Use existing config constants**:
+  - `ANIMATION_CONFIG` for animation settings
+  - `LAYOUT_CONFIG` for spacing and breakpoints
+  - `UI_CONFIG` for button/text/icon classes
+  - `IMAGE_CONFIG` for image dimensions and quality
+  - `PRICING_CONFIG` for pricing-related constants
+- **Add new constants to config.js when needed**
+
+### Animation Guidelines
+- **Use `data-anime` attributes with config constants**:
+  ```typescript
+  data-anime={`targets: ${ANIMATION_CONFIG.TARGETS.CHILDREN}; translateY: ${ANIMATION_CONFIG.TRANSFORMS.SLIDE_UP}; opacity: ${ANIMATION_CONFIG.TRANSFORMS.FADE_IN}; easing: ${ANIMATION_CONFIG.EASING.EASE_OUT_CUBIC}; duration: ${ANIMATION_CONFIG.DURATION.NORMAL}; delay: anime.stagger(${ANIMATION_CONFIG.DELAY.STAGGER_MEDIUM}, {start: ${ANIMATION_CONFIG.DELAY.INITIAL_MEDIUM}});`}
+  ```
+- **Extract complex animation logic to utility functions**
+- **Use CSS animations when possible for better performance**
+- **Cache animation data to avoid re-parsing**
+
+### Image Optimization
+- **Always use Next.js Image component**
+- **Use config constants for dimensions and quality**:
+  ```typescript
+  <Image
+    src="/path/to/image.jpg"
+    alt="Descriptive alt text"
+    width={IMAGE_CONFIG.DIMENSIONS.HERO_IMAGE.width}
+    height={IMAGE_CONFIG.DIMENSIONS.HERO_IMAGE.height}
+    quality={IMAGE_CONFIG.DEFAULT_QUALITY}
+    priority={isAboveFold}
+  />
+  ```
+- **Provide proper alt text for accessibility**
+- **Use appropriate quality settings (85-90 for above-fold, 75-80 for below-fold)**
+
+### Error Handling
+- **Implement proper error boundaries**
+- **Use try-catch blocks for async operations**
+- **Log errors in development, handle silently in production**
+- **Provide fallback UI for error states**
+
+### Security Best Practices
+- **NEVER hardcode API keys** - Use environment variables
+- **Validate all user inputs**
+- **Use proper CSP headers**
+- **Sanitize data before rendering**
+
+### Performance Optimization
+- **Use dynamic imports for non-critical components**:
+  ```typescript
+  const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
+    ssr: false,
+  });
+  ```
+- **Implement proper loading states**
+- **Use React.memo for expensive components**
+- **Optimize bundle size by removing unused dependencies**
+
+### Accessibility (A11y)
+- **Always provide proper ARIA labels**
+- **Use semantic HTML elements**
+- **Ensure proper color contrast**
+- **Implement keyboard navigation**
+- **Add focus management for modals**
+
+### Code Quality Rules
+
+#### Component Size
+- **Keep components under 200 lines**
+- **Split large components into smaller, focused components**
+- **Extract reusable logic into custom hooks**
+
+#### Comments & Documentation
+- **Remove commented code blocks** - Use version control history
+- **Add JSDoc comments for complex functions**
+- **Document component props and usage**
+
+#### Naming Conventions
+- **Use PascalCase for components**: `ContactForm`, `HeroSection`
+- **Use camelCase for functions and variables**: `handleSubmit`, `isLoading`
+- **Use SCREAMING_SNAKE_CASE for constants**: `ANIMATION_CONFIG`
+- **Use kebab-case for CSS classes**: `hero-header`, `btn-primary`
+
+### File Organization
+```
+components/
+  common/           # Reusable components
+  footers/          # Footer components
+  headers/          # Header components
+  homes/            # Home page sections
+  modals/           # Modal components
+constants/          # Configuration and constants
+context/            # React context providers
+data/               # Static data files
+types/              # TypeScript type definitions
+utils/               # Utility functions
+```
+
+### Environment Variables
+- **Use `.env.local` for local development**
+- **Use `.env.production` for production**
+- **Never commit sensitive data to version control**
+- **Prefix custom variables with `NEXT_PUBLIC_` for client-side access**
+
+### Testing Guidelines
+- **Write unit tests for utility functions**
+- **Test component rendering and user interactions**
+- **Use proper test data and mocks**
+- **Test accessibility features**
+
+### Deployment Checklist
+- **Remove console.log statements in production**
+- **Optimize images and assets**
+- **Verify SEO meta tags**
+- **Test performance and accessibility**
+- **Validate all forms and interactions**
+
+## Common Patterns
+
+### Form Handling
+```typescript
+const [formData, setFormData] = useState({
+  name: '',
+  email: '',
+  message: ''
+});
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    // Form submission logic
+  } catch (error) {
+    // Error handling
+  }
+};
+```
+
+### Animation Integration
+```typescript
+useEffect(() => {
+  const elements = document.querySelectorAll('[data-anime]');
+  // Animation logic using config constants
+}, []);
+```
+
+### Context Usage
+```typescript
+const { state, actions } = useAppState();
+const { isMobileMenuOpen } = state;
+const { setMobileMenuOpen } = actions;
+```
+
+## Anti-Patterns to Avoid
+
+### ❌ Don't Do This
+- Mix `.jsx` and `.tsx` files
+- Hardcode values instead of using config constants
+- Put complex animation logic in layout files
+- Use legacy Context.jsx instead of AppStateContext
+- Leave commented code blocks
+- Expose API keys in source code
+- Create components larger than 200 lines
+- Use silent error handling without logging
+
+### ✅ Do This Instead
+- Use `.tsx` for all React components
+- Extract all hardcoded values to config constants
+- Create dedicated animation utilities
+- Use the modern AppStateContext system
+- Remove commented code or use version control
+- Use environment variables for sensitive data
+- Split large components into smaller ones
+- Implement proper error logging and user feedback
+
+## Code Review Checklist
+- [ ] Uses TypeScript with proper interfaces
+- [ ] Follows import organization
+- [ ] Uses config constants instead of hardcoded values
+- [ ] Implements proper error handling
+- [ ] Includes accessibility features
+- [ ] Optimizes performance
+- [ ] Follows naming conventions
+- [ ] Maintains component size limits
+- [ ] Uses modern React patterns
+- [ ] Includes proper documentation
+
+## Quick Reference
+
+### Essential Imports
+```typescript
+import { useAppState } from '@/context/AppStateContext';
+import { ANIMATION_CONFIG, IMAGE_CONFIG } from '@/constants/config';
+import { ButtonConfig, FormConfig } from '@/types';
+```
+
+### Common Config Usage
+```typescript
+// Animation
+ANIMATION_CONFIG.DURATION.NORMAL
+ANIMATION_CONFIG.EASING.EASE_OUT_CUBIC
+ANIMATION_CONFIG.TRANSFORMS.FADE_IN
+
+// Images
+IMAGE_CONFIG.DEFAULT_QUALITY
+IMAGE_CONFIG.DIMENSIONS.HERO_IMAGE
+
+// Layout
+LAYOUT_CONFIG.SPACING.SECTION_PADDING
+LAYOUT_CONFIG.BREAKPOINTS.MD
+```
+
+This project prioritizes type safety, performance, accessibility, and maintainability. Always consider the user experience and code quality when making changes.

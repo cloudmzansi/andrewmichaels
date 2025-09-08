@@ -1,0 +1,13 @@
+@use "sass:meta";
+/* Import uni-core components */
+@import url("./uni-core.min.css");
+
+/* Import additional styles */
+@import url("./unicons.min.css");
+@import url("./swiper-bundle.min.css");
+
+/* Import main style */
+@import url("./theme/main.min.purge.css");
+
+/* Only load theme-4 since it's the only one being used */
+@include meta.load-css("theme/theme-four.min.purge.scss");

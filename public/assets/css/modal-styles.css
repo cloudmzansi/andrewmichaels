@@ -1,0 +1,444 @@
+/* Modal Styles - Consistent with Site Design System */
+
+/* Base Modal Styles */
+.uc-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.uc-modal.uc-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dark mode modal overlay */
+.uc-dark .uc-modal {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Dialog */
+.uc-modal-dialog {
+  position: relative;
+  background-color: var(--bs-white, #ffffff);
+  color: var(--bs-gray-900, #111827);
+  border-radius: var(--radius, 8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--bs-gray-200, #e5e7eb);
+  max-width: 500px;
+  width: 90%;
+  margin: 2rem auto;
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+/* Dark mode modal dialog */
+.uc-dark .uc-modal-dialog {
+  background-color: var(--bs-gray-800, #1f2937);
+  color: var(--bs-white, #ffffff);
+  border-color: var(--bs-gray-700, #374151);
+}
+
+/* Modal Animations */
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-30px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Success Icon Animation */
+@keyframes successPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Success Icon Styles */
+.success-icon {
+  width: 80px;
+  height: 80px;
+  font-size: 2.5rem;
+  animation: successPulse 0.6s ease-out;
+  box-shadow: 0 0 30px rgba(var(--bs-primary-rgb), 0.5);
+  transition: transform 0.2s ease;
+}
+
+.success-icon:hover {
+  transform: scale(1.05);
+}
+
+/* Modal Close Button */
+.uc-modal-close-default {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+  background: transparent;
+  border: none;
+  color: var(--bs-gray-500, #6b7280);
+  transition: all 0.2s ease;
+}
+
+.uc-modal-close-default:hover {
+  color: var(--bs-gray-700, #374151);
+  transform: rotate(90deg);
+}
+
+.uc-dark .uc-modal-close-default {
+  color: var(--bs-gray-400, #9ca3af);
+}
+
+.uc-dark .uc-modal-close-default:hover {
+  color: var(--bs-white, #ffffff);
+}
+
+/* Modal Content */
+.modal-content {
+  padding: 1.5rem 2rem;
+}
+
+/* Success Modal Specific Styles */
+.success-modal-title {
+  color: var(--bs-primary, #12715b);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.success-modal-message {
+  color: var(--bs-gray-600, #4b5563);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.uc-dark .success-modal-message {
+  color: var(--bs-gray-300, #d1d5db);
+}
+
+/* Action Buttons */
+.success-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.success-actions .btn {
+  min-height: 44px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.success-actions .btn:hover {
+  transform: translateY(-1px);
+}
+
+.success-actions .btn:active {
+  transform: translateY(0);
+}
+
+/* Additional Info */
+.additional-info {
+  margin-top: 1rem;
+}
+
+.additional-info p {
+  font-size: 0.875rem;
+  color: var(--bs-gray-500, #6b7280);
+  margin-bottom: 0;
+}
+
+.uc-dark .additional-info p {
+  color: var(--bs-gray-400, #9ca3af);
+}
+
+.additional-info a {
+  color: var(--bs-primary, #12715b);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.additional-info a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .uc-modal-dialog {
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+    width: calc(100vw - 2rem);
+  }
+  
+  .modal-content {
+    padding: 1rem 1.5rem;
+  }
+  
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+  
+  .success-modal-title {
+    font-size: 1.25rem;
+  }
+  
+  .success-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .success-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Contact Modal Specific Styles */
+.contact-modal-dialog {
+  max-width: 650px;
+}
+
+.contact-modal-content {
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .contact-modal-content {
+    padding: 1.5rem;
+  }
+}
+
+/* Form Elements in Modals */
+.modal-form .form-control {
+  background-color: var(--bs-white, #ffffff);
+  border: 1px solid var(--bs-gray-300, #d1d5db);
+  color: var(--bs-gray-900, #111827);
+  border-radius: 8px;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.modal-form .form-control:focus {
+  border-color: var(--bs-primary, #12715b);
+  box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.1);
+  outline: none;
+}
+
+.uc-dark .modal-form .form-control {
+  background-color: var(--bs-gray-700, #374151);
+  border-color: var(--bs-gray-600, #4b5563);
+  color: var(--bs-white, #ffffff);
+}
+
+.uc-dark .modal-form .form-control:focus {
+  border-color: var(--bs-primary, #12715b);
+  box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.2);
+}
+
+/* Modal Submit Button */
+.modal-submit-btn {
+  background-color: var(--bs-primary, #12715b);
+  border-color: var(--bs-primary, #12715b);
+  color: var(--bs-white, #ffffff);
+  min-height: 48px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.modal-submit-btn:hover {
+  background-color: var(--btn-hover-bg, #0f604d);
+  border-color: var(--btn-hover-border-color, #0e5a49);
+  transform: translateY(-1px);
+}
+
+.modal-submit-btn:active {
+  transform: translateY(0);
+}
+
+.modal-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading State */
+.modal-submit-btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.modal-submit-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Newsletter Modal Specific Styles */
+.newsletter-modal-dialog {
+  max-width: 800px;
+}
+
+/* Search Modal Specific Styles */
+.uc-modal-full {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.uc-modal-full .uc-modal-dialog {
+  background-color: var(--bs-white, #ffffff);
+  color: var(--bs-gray-900, #111827);
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  max-width: none;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uc-dark .uc-modal-full .uc-modal-dialog {
+  background-color: var(--bs-gray-900, #111827);
+  color: var(--bs-white, #ffffff);
+}
+
+/* Accessibility Improvements */
+.uc-modal:focus {
+  outline: none;
+}
+
+.uc-modal-dialog:focus {
+  outline: 2px solid var(--bs-primary, #12715b);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .uc-modal,
+  .uc-modal-dialog,
+  .success-icon,
+  .success-actions .btn,
+  .modal-submit-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .success-icon:hover,
+  .success-actions .btn:hover,
+  .modal-submit-btn:hover {
+    transform: none !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .uc-modal-dialog {
+    border: 2px solid var(--bs-gray-900, #111827);
+  }
+  
+  .uc-dark .uc-modal-dialog {
+    border: 2px solid var(--bs-white, #ffffff);
+  }
+  
+  .success-modal-title {
+    color: var(--bs-gray-900, #111827);
+  }
+  
+  .uc-dark .success-modal-title {
+    color: var(--bs-white, #ffffff);
+  }
+}
+
+/* Fix for overlay issues when returning from developer tools */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Ensure overlays are properly hidden by default */
+.uc-offcanvas-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.uc-offcanvas-overlay.uc-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Force close any stuck overlays */
+body.force-close-overlays .uc-offcanvas-overlay {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Reset any stuck modal states */
+body.reset-modal-state {
+  overflow: auto !important;
+}
+
+body.reset-modal-state .uc-offcanvas-overlay {
+  display: none !important;
+}
