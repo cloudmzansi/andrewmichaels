@@ -49,6 +49,44 @@ const caseStudyData: CaseStudyProject = {
     'Enhanced brand credibility',
     'Mobile-optimized user experience'
   ],
+  metrics: [
+    {
+      id: 'consultation-bookings',
+      value: 250,
+      unit: '%',
+      label: 'Increase in Consultation Bookings',
+      context: 'Within first 2 months',
+      icon: 'uil-calendar-alt',
+      color: 'primary'
+    },
+    {
+      id: 'loading-speed',
+      value: 90,
+      unit: '%',
+      label: 'Faster Loading Speed',
+      context: 'Improved site performance',
+      icon: 'uil-clock',
+      color: 'success'
+    },
+    {
+      id: 'portfolio-showcase',
+      value: 100,
+      unit: '%',
+      label: 'Portfolio Showcase System',
+      context: 'Professional project galleries',
+      icon: 'uil-images',
+      color: 'info'
+    },
+    {
+      id: 'mobile-optimization',
+      value: 100,
+      unit: '%',
+      label: 'Mobile-Optimized Experience',
+      context: 'Perfect on all devices',
+      icon: 'uil-mobile-android',
+      color: 'warning'
+    }
+  ],
   beforeImage: {
     src: '/assets/images/template/kdinteriors.png',
     alt: 'Before: Basic website with poor image quality',

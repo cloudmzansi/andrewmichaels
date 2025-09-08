@@ -49,6 +49,44 @@ const caseStudyData: CaseStudyProject = {
     'New funding opportunities',
     'Mobile-first accessibility'
   ],
+  metrics: [
+    {
+      id: 'inquiry-increase',
+      value: 300,
+      unit: '%',
+      label: 'Increase in Program Inquiries',
+      context: 'Within first 3 months',
+      icon: 'uil-users-alt',
+      color: 'primary'
+    },
+    {
+      id: 'loading-speed',
+      value: 85,
+      unit: '%',
+      label: 'Faster Loading Speed',
+      context: 'Improved page performance',
+      icon: 'uil-clock',
+      color: 'success'
+    },
+    {
+      id: 'online-registrations',
+      value: 100,
+      unit: '%',
+      label: 'Online Registration System',
+      context: 'Eliminated EFT barriers',
+      icon: 'uil-check-circle',
+      color: 'info'
+    },
+    {
+      id: 'mobile-accessibility',
+      value: 100,
+      unit: '%',
+      label: 'Mobile-First Design',
+      context: 'Accessible on all devices',
+      icon: 'uil-mobile-android',
+      color: 'warning'
+    }
+  ],
   beforeImage: {
     src: '/assets/images/template/abbaquar.png',
     alt: 'Before: Basic website with limited functionality',

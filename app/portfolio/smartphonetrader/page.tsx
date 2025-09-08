@@ -49,6 +49,44 @@ const caseStudyData: CaseStudyProject = {
     'Secure payment processing',
     'Mobile-optimized user experience'
   ],
+  metrics: [
+    {
+      id: 'mobile-conversions',
+      value: 180,
+      unit: '%',
+      label: 'Increase in Mobile Conversions',
+      context: 'Within first 4 weeks',
+      icon: 'uil-mobile-android',
+      color: 'primary'
+    },
+    {
+      id: 'cart-abandonment',
+      value: 65,
+      unit: '%',
+      label: 'Reduction in Cart Abandonment',
+      context: 'Improved checkout process',
+      icon: 'uil-shopping-cart',
+      color: 'success'
+    },
+    {
+      id: 'inventory-management',
+      value: 100,
+      unit: '%',
+      label: 'Automated Inventory System',
+      context: 'Real-time stock updates',
+      icon: 'uil-box',
+      color: 'info'
+    },
+    {
+      id: 'search-functionality',
+      value: 100,
+      unit: '%',
+      label: 'Enhanced Search Features',
+      context: 'Advanced filtering capabilities',
+      icon: 'uil-search',
+      color: 'warning'
+    }
+  ],
   beforeImage: {
     src: '/assets/images/template/smartphonetrader.png',
     alt: 'Before: Outdated e-commerce platform with poor mobile experience',
